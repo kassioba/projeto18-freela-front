@@ -1,11 +1,12 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 export default function StudentPage(){
     const params = useParams()
     const [student, setStudent] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() =>{
         axios.get(`${import.meta.env.VITE_API_URL}/student/${params.id}`)
@@ -21,6 +22,7 @@ export default function StudentPage(){
                 </Half>
                 <Half>
                     <DownHalf>
+                    <span className="edit" onClick={() => navigate(`/edit/${params.id}`)}>Editar dados</span>
                         <span className="title">DADOS</span>
                         <div className="student-data">
                             <span>NOME: {student[0]?.name}</span>
@@ -82,6 +84,13 @@ height: 100%;
 display: flex;
 flex-direction: column;
 align-items: center;
+position: relative;
+
+.edit{
+        position: absolute;
+        top: 150px;
+        cursor: pointer;
+    }
 
 .title{}
 

@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import axios, { all } from 'axios'
 import ProjectsGrades from './pages/ProjectsGrades'
 import Header from './components/Header'
+import EditPage from './pages/EditPage'
 
 function App() {
   const [allClasses, setAllClasses] = useState([])
@@ -28,6 +29,7 @@ function App() {
         <Route path='/student/:id' element={<StudentPage/>}/>
         <Route path='/submit' element={<ProjectSubmitPage allClasses={allClasses}/>}/>
         <Route path='/grades' element={<ProjectsGrades allClasses={allClasses}/>}/>
+        <Route path='/edit/:id' element={<EditPage allClasses={allClasses}/>}/>
       </Routes>
     </BrowserRouter>
   )
