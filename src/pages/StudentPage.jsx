@@ -8,7 +8,7 @@ export default function StudentPage(){
     const [student, setStudent] = useState([])
 
     useEffect(() =>{
-        axios.get(`http://localhost:5000/student/${params.id}`)
+        axios.get(`${import.meta.env.VITE_API_URL}/student/${params.id}`)
         .then(res => setStudent(res.data))
         .catch(err => alert('Não foi possível buscar informações no servidor'))
     }, [])

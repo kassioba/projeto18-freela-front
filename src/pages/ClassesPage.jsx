@@ -9,7 +9,7 @@ export default function ClassesPage({allClasses}){
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/students/${currentClass}`)
+        axios.get(`${import.meta.env.VITE_API_URL}/students/${currentClass}`)
         .then(res => setStudents(res.data))
         .catch(err => alert('Não foi possível buscar informações no servidor'))
     },[currentClass])

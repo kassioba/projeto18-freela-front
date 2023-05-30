@@ -11,7 +11,7 @@ export default function RegisterPage(){
     const [allClasses, setAllClasses] = useState([])
 
     useEffect(() =>{
-        axios.get('http://localhost:5000/classes')
+        axios.get(`${import.meta.env.VITE_API_URL}/classes`)
         .then(res => setAllClasses(res.data))
         .catch(err => alert('Não foi possível buscar informações no servidor'))
     },[])
@@ -23,7 +23,7 @@ export default function RegisterPage(){
 
         if(!classes) return alert('Por favor, selecione uma turma.')
 
-        axios.post('http://localhost:5000/register', {
+        axios.post(`${import.meta.env.VITE_API_URL}/register`, {
             name,
             cpf,
             photo,

@@ -10,7 +10,7 @@ export default function ProjectsGrades({allClasses}){
     const [grade, setGrade] = useState('')
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/projects/${currentClass}`)
+        axios.get(`${import.meta.env.VITE_API_URL}/projects/${currentClass}`)
         .then(res => setClassProjects(res.data))
         .catch(err => alert('Não foi possível buscar informações no servidor'))
 
@@ -19,7 +19,7 @@ export default function ProjectsGrades({allClasses}){
 
     useEffect(() => {
         if(currentProject){
-            axios.get(`http://localhost:5000/projects/${currentClass}/${currentProject}`)
+            axios.get(`${import.meta.env.VITE_API_URL}/projects/${currentClass}/${currentProject}`)
             .then(res => setStudents(res.data))
             .catch(err => alert('Não foi possível buscar informações no servidor'))
         }
@@ -27,7 +27,7 @@ export default function ProjectsGrades({allClasses}){
 
     function changeGrade(e, student){
 
-        axios.put('http://localhost:5000/grade', {grade: e.target.value, student})
+        axios.put(`${import.meta.env.VITE_API_URL}/grade`, {grade: e.target.value, student})
         .catch(err => alert('Não foi possível alterar a nota'))
         
     }

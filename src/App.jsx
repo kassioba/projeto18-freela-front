@@ -13,7 +13,7 @@ function App() {
   const [allClasses, setAllClasses] = useState([])
 
   useEffect(() =>{
-    axios.get('http://localhost:5000/classes')
+    axios.get(`${import.meta.env.VITE_API_URL}/classes`)
     .then(res => setAllClasses(res.data))
     .catch(err => alert('Não foi possível buscar informações no servidor'))
 },[])
